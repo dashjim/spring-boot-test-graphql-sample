@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by jim.ji@farfetch.com on 2017/10/3.
  */
-public interface IProductController {
+public interface IProductSpi {
 
     ProductDTO getProductsById(@PathVariable String pid);
 

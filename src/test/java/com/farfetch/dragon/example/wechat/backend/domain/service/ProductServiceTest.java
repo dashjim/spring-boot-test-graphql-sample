@@ -16,9 +16,7 @@ import static org.junit.Assert.assertThat;
  * Created by jim.ji@farfetch.com on 2017/10/3.
  */
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ProductServiceTest {
+public class ProductServiceTest extends SpringBootTestParent{
 
     @Autowired
     private IProductService productService;
@@ -28,16 +26,15 @@ public class ProductServiceTest {
 
     @Test
     public void getProductsByIdWhenIdIsGivenShouldBeGood(){
-        IProductService.ProductDomain product = productService.getProductsById("anything");
+        IProductService.ProductDAO product = productService.getProductsById("anything");
         assertNotNull(product);
         assertThat("泰迪熊印花背包", equalTo(product.getShortDescription()));
     }
 
-    @Test
-    public void getProductByIdWhenNoIdShouldThrowException(){
-//        productService.getProductsById(null);
+    @Test(expected = IllegalArgumentException.class)
+    public void getProductByIdWhenNoIdShouldThrowException() {
+        productService.getProductsById(null);
 //        this.thrown.expect(IllegalArgumentException.class);
     }
-
 
 }

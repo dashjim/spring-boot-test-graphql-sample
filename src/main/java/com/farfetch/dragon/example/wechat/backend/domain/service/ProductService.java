@@ -6,9 +6,7 @@ import com.jayway.jsonpath.ReadContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 /**
@@ -26,7 +24,7 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public ProductDomain getProductsById(String id) {
+    public ProductDAO getProductsById(String id) {
 
         LOGGER.trace("product id is {}, is empty? {}", id, StringUtils.isEmpty(id));
 
@@ -34,13 +32,14 @@ public class ProductService implements IProductService{
         String jsonString = productsGateway.getProductsById(id);
         ReadContext ctx = JsonPath.parse(jsonString);
 
-        ProductDomain productDomain = new ProductDomain();
+        ProductDAO productDAO = new ProductDAO();
 
-        productDomain.setId(""+ctx.read("$.id"));
-        productDomain.setShortDescription(ctx.read("$.shortDescription"));
-        productDomain.setImages(ctx.read("$.images.images[?(@.size == 300)]"));
+        productDAO.setProductJsonRaw(jsonString);
+        productDAO.setId(""+ctx.read("$.id"));
+        productDAO.setShortDescription(ctx.read("$.shortDescription"));
+        productDAO.setImages(ctx.read("$.images.images[?(@.size == 300)]"));
 
-        return productDomain;
+        return productDAO;
     }
 
     @Override

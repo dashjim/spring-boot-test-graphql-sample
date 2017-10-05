@@ -1,7 +1,5 @@
 package com.farfetch.dragon.example.wechat.backend;
 
-import com.farfetch.dragon.example.wechat.backend.clientSdk.spi.IProductController;
-import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -18,6 +16,7 @@ import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by jim.ji@farfetch.com on 2017/10/4.
+ *
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
