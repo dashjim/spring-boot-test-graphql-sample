@@ -1,0 +1,14 @@
+schema{
+    query: Query
+}
+
+type Query{
+    product(id: String): ProductDTO
+}
+
+type ProductDTO{
+    id: String
+    description: String
+    shortDescription: String
+    gender: String
+}

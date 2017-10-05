@@ -3,6 +3,8 @@ package com.farfetch.dragon.example.wechat.backend.client.api;
 import com.farfetch.dragon.example.wechat.backend.client.spi.IProductSpi;
 import com.farfetch.dragon.example.wechat.backend.domain.service.IProductService;
 import com.farfetch.dragon.example.wechat.backend.domain.service.ProductService;
+import graphql.schema.DataFetcher;
+import graphql.schema.DataFetchingEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-public class ProductAPI implements IProductSpi {
+public class ProductAPI implements IProductSpi, DataFetcher<IProductSpi.ProductDTO> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductAPI.class);
 
@@ -35,5 +37,11 @@ public class ProductAPI implements IProductSpi {
 
         BeanUtils.copyProperties(product, productDTO);
         return productDTO;
+    }
+
+    // From DataFetcher interface
+    @Override
+    public ProductDTO get(DataFetchingEnvironment env) {
+        return getProductsById(env.getArgument("id")); // TODO
     }
 }
