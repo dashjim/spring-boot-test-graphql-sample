@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public interface IMerchantService {
 
-    MerchantDAO getMerchantsById (String id );
+    MerchantDomain getMerchantsById (String id );
     getMerchantsLocationDAO getMerchantsLocationsById (String id);
 }
 
@@ -28,7 +28,7 @@ class getMerchantsLocationDAO{
 }
 
 @Data
-class MerchantDAO {
+class MerchantDomain {
 
     String jsonRaw;
 

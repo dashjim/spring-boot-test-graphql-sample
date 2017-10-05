@@ -1,4 +1,4 @@
-package com.farfetch.dragon.example.wechat.backend.clientSdk.restful;
+package com.farfetch.dragon.example.wechat.backend.client.restful;
 
 /**
  * Created by dashj on 2017/10/2.

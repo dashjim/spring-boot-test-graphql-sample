@@ -1,12 +1,8 @@
-package com.farfetch.dragon.example.wechat.backend.clientSdk.restful;
+package com.farfetch.dragon.example.wechat.backend.client.restful;
 
-import com.farfetch.dragon.example.wechat.backend.clientSdk.api.ProductAPI;
-import com.farfetch.dragon.example.wechat.backend.clientSdk.spi.IProductSpi;
-import com.farfetch.dragon.example.wechat.backend.domain.service.IProductService;
-import com.farfetch.dragon.example.wechat.backend.domain.service.ProductService;
+import com.farfetch.dragon.example.wechat.backend.client.spi.IProductSpi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

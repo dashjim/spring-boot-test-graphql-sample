@@ -1,6 +1,6 @@
-package com.farfetch.dragon.example.wechat.backend.clientSdk.api;
+package com.farfetch.dragon.example.wechat.backend.client.api;
 
-import com.farfetch.dragon.example.wechat.backend.clientSdk.spi.IProductSpi;
+import com.farfetch.dragon.example.wechat.backend.client.spi.IProductSpi;
 import com.farfetch.dragon.example.wechat.backend.domain.service.IProductService;
 import com.farfetch.dragon.example.wechat.backend.domain.service.ProductService;
 import org.slf4j.Logger;
@@ -29,7 +29,7 @@ public class ProductAPI implements IProductSpi {
     public ProductDTO getProductsById( String pid ) {
 
         LOGGER.trace("getting product for {}", pid);
-        IProductService.ProductDAO product = productService.getProductsById(pid);
+        IProductService.ProductDomain product = productService.getProductsById(pid);
 
         ProductDTO productDTO = new ProductDTO();
 

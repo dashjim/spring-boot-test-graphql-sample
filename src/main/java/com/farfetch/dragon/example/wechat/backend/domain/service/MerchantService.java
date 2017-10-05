@@ -21,21 +21,21 @@ public class MerchantService implements IMerchantService{
     }
 
     @Override
-    public MerchantDAO getMerchantsById(String id) {
+    public MerchantDomain getMerchantsById(String id) {
 
-        final MerchantDAO merchantDAO = new MerchantDAO();
+        final MerchantDomain merchantDomain = new MerchantDomain();
         final String merchantJson = merchantsGateway.getMerchantsById(id);
 
         final DocumentContext parsed = JsonPath.parse(merchantJson);
-        merchantDAO.setJsonRaw(merchantJson);
-        merchantDAO.setId(parsed.read("$.id"));
-        merchantDAO.setImages(parsed.read("$.images[?(@.size == 'medium')]"));
-        merchantDAO.setCountry(parsed.read("$.address.country.name")); // 意大利
-        merchantDAO.setDescription(parsed.read("$.description"));
-        merchantDAO.setName(parsed.read("$.name"));
-        merchantDAO.setType(parsed.read("$.Boutique"));
+        merchantDomain.setJsonRaw(merchantJson);
+        merchantDomain.setId("" + parsed.read("$.id"));
+        merchantDomain.setImages(parsed.read("$.images[?(@.size == 'medium')]"));
+        merchantDomain.setCountry(parsed.read("$.address.country.name")); // 意大利
+        merchantDomain.setDescription(parsed.read("$.description"));
+        merchantDomain.setName(parsed.read("$.name"));
+        merchantDomain.setType(parsed.read("$.type"));
 
-        return merchantDAO;
+        return merchantDomain;
     }
 
     @Override

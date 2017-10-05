@@ -1,8 +1,6 @@
-package com.farfetch.dragon.example.wechat.backend.clientSdk.spi;
+package com.farfetch.dragon.example.wechat.backend.client.spi;
 
 import lombok.Data;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;

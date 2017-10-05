@@ -9,12 +9,12 @@ import java.util.Map;
  * Created by jim.ji@farfetch.com on 2017/10/3.
  */
 public interface IProductService {
-    ProductDAO getProductsById(String id);
+    ProductDomain getProductsById(String id);
     String getProductsMeasurementsById(String id);
     String getProductsOutfitsById(String id);
 
     @Data
-    class ProductDAO {
+    class ProductDomain {
 
         String ProductJsonRaw;
 

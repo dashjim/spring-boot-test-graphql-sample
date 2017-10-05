@@ -24,7 +24,7 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public ProductDAO getProductsById(String id) {
+    public ProductDomain getProductsById(String id) {
 
         LOGGER.trace("product id is {}, is empty? {}", id, StringUtils.isEmpty(id));
 
@@ -32,14 +32,14 @@ public class ProductService implements IProductService{
         String jsonString = productsGateway.getProductsById(id);
         ReadContext ctx = JsonPath.parse(jsonString);
 
-        ProductDAO productDAO = new ProductDAO();
+        ProductDomain productDomain = new ProductDomain();
 
-        productDAO.setProductJsonRaw(jsonString);
-        productDAO.setId(""+ctx.read("$.id"));
-        productDAO.setShortDescription(ctx.read("$.shortDescription"));
-        productDAO.setImages(ctx.read("$.images.images[?(@.size == 300)]"));
+        productDomain.setProductJsonRaw(jsonString);
+        productDomain.setId(""+ctx.read("$.id"));
+        productDomain.setShortDescription(ctx.read("$.shortDescription"));
+        productDomain.setImages(ctx.read("$.images.images[?(@.size == 300)]"));
 
-        return productDAO;
+        return productDomain;
     }
 
     @Override
