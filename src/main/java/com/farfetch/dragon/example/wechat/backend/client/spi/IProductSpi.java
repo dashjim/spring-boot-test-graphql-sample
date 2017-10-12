@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public interface IProductSpi {
 
-    ProductDTO getProductsById(@PathVariable String pid);
+    ProductDTO getProductsById( String pid);
 
     @Data
     class ProductDTO{
